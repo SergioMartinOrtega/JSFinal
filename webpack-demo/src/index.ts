@@ -1,6 +1,14 @@
 
 const list = document.querySelector('ul');
 const input = document.querySelector('input');
+const openDelete = document.querySelector('.material-icons btn-delete');
+const deleteTask =  document.querySelector('.deleted-container')
+
+function countTask() {
+  const tasks = document.getElementById('tasks');
+  const allList = document.getElementsByTagName('li');
+  tasks.textContent = 'Quedan '+ allList.length + ' tareas';
+}
 
 input.onkeyup = (e) => {
   const inputElement = e.target as HTMLInputElement;
@@ -24,6 +32,13 @@ input.onkeyup = (e) => {
     div.appendChild(check);
     div.appendChild(span);
     input.value = '';
+    countTask();
   }
 }
+
+openDelete.addEventListener('click', function () {
+  deleteTask.classList.add('open');
+});
+
+
 
