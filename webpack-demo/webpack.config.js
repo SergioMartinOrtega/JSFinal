@@ -28,5 +28,8 @@ module.exports = {
     new CopyPlugin([
       { from: 'src/index.html', to: 'index.html' },
     ]),
+    new CopyPlugin([
+      { from: 'src/styles.css', to: 'styles.css' },
+    ]),
   ],
 };

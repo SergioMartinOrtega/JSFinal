@@ -17,7 +17,7 @@ button {
   background: darkslategrey;
   display: inline-block;
   color: white;
-}
+    }
 
 button:active
 {
