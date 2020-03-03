@@ -1,9 +1,40 @@
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Getting Started</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
-    <script src="main.js"></script>
+    <header>
+      <h1>Administrador de tareas</h1>
+    </header>
+    <main>
+      <label for="tarea"></label>
+      <input type="text" id="tarea" name="tarea" placeholder='¿Qué necesitas hacer?'>
+
+      <ul class="list"></ul>
+      <div class="option">
+        <p id="tasks"></p>
+      </div>
+      <div>
+        <button id="all">Todas</button>
+        <button id="pending">Pendientes</button>
+        <button id="completed">Completadas</button>
+      </div>
+    </main>
+    <footer>
+      <p>Autor: Sergio Martín Ortega <br>
+        Github: <a href="https://github.com/SergioMartinOrtega">https://github.com/SergioMartinOrtega</a>
+      </p>
+    </footer>
+    <div class="deleted-container">
+      <h2>¿Estás seguro de que deseas eliminar esta tarea?</h2>
+      <p id="nameTask"></p>
+      <button>Si</button>
+      <button>No</button>
+    </div>
+    <script src="bundle.js"></script>
   </body>
 </html>

@@ -1,0 +1,42 @@
+/* General */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.43;
+  margin: 0;
+  background: #e7e7e7;
+  color: black;
+  text-align: center;
+}
+
+button {
+  margin: 5px;
+  border: 0;
+  padding: 6px 6px;
+  background: darkslategrey;
+  display: inline-block;
+  color: white;
+}
+
+button:active
+{
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: default;
+  background: darkgrey;
+  color: lightgrey;
+  box-shadow: none;
+}
+
+
+/* Mensaje para borrar */
+.deleted-container {
+  display: none;
+}
+
+.deleted-container.open {
+  display: block;
+}
