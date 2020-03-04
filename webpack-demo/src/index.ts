@@ -4,7 +4,13 @@ const input = document.querySelector('input');
 const allButton = document.querySelector('#allButton');
 const pendingButton = document.querySelector('#pendingButton');
 const completedButton = document.querySelector('#completedButton');
+const buttonYes = document.querySelector('#buttonYes');
+const buttonNo = document.querySelector('#buttonNo');
 
+function countTask() {
+  const tasks = document.getElementById('tasks');
+  tasks.textContent = 'Quedan ' + list.children.length + ' tareas';
+}
 
 pendingButton.addEventListener('click', () => {
   const allItem = document.querySelector('li');
@@ -38,20 +44,28 @@ allButton.addEventListener('click', () => {
   }
 });
 
-function countTask() {
-  const tasks = document.getElementById('tasks');
-  tasks.textContent = 'Quedan ' + list.children.length + ' tareas';
-}
+buttonNo.addEventListener('click', () => {
+  const deleteTask = document.querySelector('#deleted-container');
+  deleteTask.classList.remove('open');
+})
 
-function openContainer(x, name) {
 
-  x.addEventListener('click', () => {
-    //console.log('Hace algo 1'+x.setAttribute('id'));
-    const deleteTask = document.querySelector('#deleted-container')
+function openContainer(icon, name, item) {
+
+  icon.addEventListener('click', () => {
+    console.log(name);
+    const deleteTask = document.querySelector('#deleted-container');
     deleteTask.classList.add('open');
     const nameTask = document.querySelector('#nameTask');
     nameTask.textContent = name;
+    buttonYes.addEventListener('click', () => {
+      console.log(item);
+      item.remove();
+      const deleteTask = document.querySelector('#deleted-container');
+      deleteTask.classList.remove('open');
+    })
   });
+
 }
 
 input.onkeyup = (e) => {
@@ -77,8 +91,8 @@ input.onkeyup = (e) => {
     listItem.appendChild(icon);
     div.appendChild(check);
     div.appendChild(span);
-    input.value = '';
     countTask();
-    openContainer(icon, inputElement.value);
+    openContainer(icon, inputElement.value, listItem);
+    input.value = '';
   }
 }
