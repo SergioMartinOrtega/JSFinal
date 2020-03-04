@@ -1,44 +1,84 @@
 /* General */
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.43;
-  margin: 0;
-  background: #e7e7e7;
-  color: black;
-  text-align: center;
+html {
+  box-sizing: border-box;
 }
 
-button {
-  margin: 5px;
-  border: 0;
-  padding: 6px 6px;
-  background: darkslategrey;
-  display: inline-block;
-  color: white;
-    }
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 
-button:active
-{
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background: lightgrey;
+  margin: 0;
+  padding: 5px;
+  color: darkslategrey;
+  font-weight: lighter;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto Slab', cursive;
+}
+
+i.material-icons {
+  cursor: pointer;
+}
+
+.button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: darkslategrey;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+.button.large {
+  font-size: 14px;
+  padding: 10px 25px;
+}
+
+.button:active {
   box-shadow: none;
 }
 
-button:disabled {
+.button:disabled {
   cursor: default;
   background: darkgrey;
   color: lightgrey;
   box-shadow: none;
 }
 
-
-/* Mensaje para borrar */
-.deleted-container {
-  display: none;
+/* Header */
+header h1 {
+  font-size: 30px;
+  color: darkgrey;
+  text-align: center;
 }
 
-.deleted-container.open {
-  display: block;
+/* Task */
+main #task {
+  width: 100%;
+  padding: 12px;
+  margin: 4px 0;
+  border: none;
+  outline: none;
+}
+
+main {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+  max-width: 400px;
+  background: white;
+  margin: 0 auto;
+  border-radius: 2px;
 }
 
 main ul {
@@ -55,6 +95,11 @@ main ul li {
   margin: 10px 0;
   align-content: center;
   justify-content: space-between;
+}
+
+main ul li div {
+  display: flex;
+  align-items: baseline;
 }
 
 main ul li.update div,
@@ -90,5 +135,62 @@ main div.info div {
   grid-template-columns: auto auto auto;
   justify-content: space-between;
   align-items: center;
+  grid-gap: 10px;
+}
+
+/* Footer */
+footer {
+  margin-top: 15px;
+}
+
+footer p {
+  margin: 5px 0;
+  color: darkgrey;
+  font-size: 10px;
+  text-align: center;
+}
+
+footer p a {
+  color: cadetblue;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+}
+
+/* Modal */
+.deleted-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.deleted-container.open {
+  display: block;
+}
+
+.deleted-container .box {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 10px;
+  justify-items: center;
+  padding: 10px 20px;
+  background: white;
+  max-width: 350px;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+.deleted-container .box * {
+  margin: 0;
+}
+
+.deleted-container .box div {
+  display: grid;
+  grid-template-columns: auto auto;
   grid-gap: 10px;
 }

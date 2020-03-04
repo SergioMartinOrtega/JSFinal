@@ -7,10 +7,23 @@ const completedButton = document.querySelector('#completedButton');
 const buttonYes = document.querySelector('#buttonYes');
 const buttonNo = document.querySelector('#buttonNo');
 
+
 function countTask() {
-  const tasks = document.getElementById('tasks');
-  tasks.textContent = 'Quedan ' + list.children.length + ' tareas';
+  let count = 0;
+  const tasks = document.getElementById('tasksCount');
+  //tasks.textContent = 'Quedan ' + list.children.length + ' tareas';
+  for (let i = 0; i < list.children.length; i++) {
+    let items = list.childNodes[i].firstChild.firstChild as HTMLInputElement;
+    if (items.checked === false) {
+      count++;
+    }
+  }
+  tasks.textContent = 'Quedan ' + count+ ' tareas';
 }
+
+input.addEventListener('check', () => {
+  countTask();
+})
 
 pendingButton.addEventListener('click', () => {
   const allItem = document.querySelector('li');
@@ -69,22 +82,28 @@ function openContainer(icon, name, item) {
 
 }
 
-function updateItem(item){
+function updateItem(item, oldValue, listItem){
   item.addEventListener('click', () => {
-    const updateTask = document.querySelector('li');
+    console.log(item.value);
     const icon = document.createElement('i');
     const newTask =  document.createElement('input');
 
     icon.setAttribute('class', 'material-icons');
     icon.textContent = 'done';
     newTask.setAttribute('type','text');
+    newTask.setAttribute('value', oldValue);
 
-    updateTask.setAttribute('class', 'update');
-    updateTask.appendChild(newTask);
-    updateTask.appendChild(icon);
+    listItem.setAttribute('class', 'update');
+    listItem.appendChild(newTask);
+    listItem.appendChild(icon);
     console.log(item);
     icon.addEventListener('click', () => {
-      console.log(input.value);
+      //console.log(input.value);
+      console.log(newTask.value);
+      item.textContent = newTask.value;
+      listItem.classList.remove('update');
+      icon.remove();
+      newTask.remove();
     })
   })
 }
@@ -114,7 +133,7 @@ input.onkeyup = (e) => {
     div.appendChild(span);
     countTask();
     openContainer(icon, inputElement.value, listItem);
-    updateItem(span);
+    updateItem(span, inputElement.value, listItem);
     input.value = '';
   }
 }
