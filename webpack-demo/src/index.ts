@@ -63,9 +63,30 @@ function openContainer(icon, name, item) {
       item.remove();
       const deleteTask = document.querySelector('#deleted-container');
       deleteTask.classList.remove('open');
+      countTask();
     })
   });
 
+}
+
+function updateItem(item){
+  item.addEventListener('click', () => {
+    const updateTask = document.querySelector('li');
+    const icon = document.createElement('i');
+    const newTask =  document.createElement('input');
+
+    icon.setAttribute('class', 'material-icons');
+    icon.textContent = 'done';
+    newTask.setAttribute('type','text');
+
+    updateTask.setAttribute('class', 'update');
+    updateTask.appendChild(newTask);
+    updateTask.appendChild(icon);
+    console.log(item);
+    icon.addEventListener('click', () => {
+      console.log(input.value);
+    })
+  })
 }
 
 input.onkeyup = (e) => {
@@ -93,6 +114,7 @@ input.onkeyup = (e) => {
     div.appendChild(span);
     countTask();
     openContainer(icon, inputElement.value, listItem);
+    updateItem(span);
     input.value = '';
   }
 }

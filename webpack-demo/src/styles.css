@@ -41,6 +41,54 @@ button:disabled {
   display: block;
 }
 
+main ul {
+  min-height: 300px;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid darkgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+main ul li {
+  display: flex;
+  margin: 10px 0;
+  align-content: center;
+  justify-content: space-between;
+}
+
+main ul li.update div,
+main ul li.update i.btn-delete {
+  display: none;
+}
+
+main ul li.update input {
+  width: 100%;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid darkgrey;
+}
+
 main ul li input:checked + span {
   text-decoration: line-through;
+}
+
+main div.info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 5px 10px;
+  grid-gap: 5px;
+}
+
+main div.info p {
+  font-size: 10px;
+}
+
+main div.info div {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 10px;
 }
