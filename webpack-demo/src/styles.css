@@ -40,3 +40,7 @@ button:disabled {
 .deleted-container.open {
   display: block;
 }
+
+main ul li input:checked + span {
+  text-decoration: line-through;
+}

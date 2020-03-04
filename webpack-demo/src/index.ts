@@ -1,29 +1,63 @@
 
-const list = document.querySelector('ul');
+const list = document.querySelector('#list');
 const input = document.querySelector('input');
+const allButton = document.querySelector('#allButton');
+const pendingButton = document.querySelector('#pendingButton');
+const completedButton = document.querySelector('#completedButton');
 
+
+pendingButton.addEventListener('click', () => {
+  const allItem = document.querySelector('li');
+  allItem.style.display = 'block'
+  for (let i = 0; i < list.children.length; i++) {
+    let items = list.childNodes[i].firstChild.firstChild as HTMLInputElement;
+    if (items.checked === true) {
+      let li = list.childNodes[i] as HTMLInputElement;
+      li.style.display = 'none'
+    }
+  }
+});
+
+completedButton.addEventListener('click', () => {
+  const allItem = document.querySelector('li');
+  allItem.style.display = 'block'
+  for (let i = 0; i < list.children.length; i++) {
+    let items = list.childNodes[i].firstChild.firstChild as HTMLInputElement;
+    if (items.checked === false) {
+      let li = list.childNodes[i] as HTMLInputElement;
+      li.style.display = 'none'
+    }
+  }
+});
+
+allButton.addEventListener('click', () => {
+
+  for (let i = 0; i < list.children.length; i++) {
+    let li = list.childNodes[i] as HTMLInputElement;
+    li.style.display = 'block'
+  }
+});
 
 function countTask() {
   const tasks = document.getElementById('tasks');
-  const allList = document.getElementsByTagName('li');
-  tasks.textContent = 'Quedan '+ allList.length + ' tareas';
+  tasks.textContent = 'Quedan ' + list.children.length + ' tareas';
 }
 
-function openContainer(x) {
-  
+function openContainer(x, name) {
+
   x.addEventListener('click', () => {
     //console.log('Hace algo 1'+x.setAttribute('id'));
-    const deleteTask =  document.querySelector('#deleted-container')
+    const deleteTask = document.querySelector('#deleted-container')
     deleteTask.classList.add('open');
     const nameTask = document.querySelector('#nameTask');
-    nameTask.textContent = 'prueba ';
+    nameTask.textContent = name;
   });
 }
 
 input.onkeyup = (e) => {
   const inputElement = e.target as HTMLInputElement;
 
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' && inputElement.value !== '') {
     const listItem = document.createElement('li');
     const div = document.createElement('div');
     const span = document.createElement('span');
@@ -45,6 +79,6 @@ input.onkeyup = (e) => {
     div.appendChild(span);
     input.value = '';
     countTask();
-    openContainer(icon);
+    openContainer(icon, inputElement.value);
   }
 }
