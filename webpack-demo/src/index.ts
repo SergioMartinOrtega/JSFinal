@@ -117,7 +117,8 @@ input.onkeyup = (e) => {
     const span = document.createElement('span');
     const icon = document.createElement('i');
     const check = document.createElement('input');
-
+    
+//Usamos span con el input en vez de usar un label porque al usar el label y pulsar para el actualizar se marcaba el checkbox
     listItem.setAttribute('id', inputElement.value);
     console.log(inputElement.value);
     span.textContent = inputElement.value;

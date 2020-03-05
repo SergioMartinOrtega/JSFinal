@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/indexB.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -26,10 +26,10 @@ module.exports = {
       cleanStaleWebpackAssets: false
     }),
     new CopyPlugin([
-      { from: 'src/index.html', to: 'index.html' },
+      { from: 'src/indexB.html', to: 'indexB.html' },
     ]),
     new CopyPlugin([
-      { from: 'src/styles.css', to: 'styles.css' },
+      { from: 'src/stylesB.css', to: 'stylesB.css' },
     ]),
   ],
 };
